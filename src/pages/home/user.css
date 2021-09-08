@@ -1,0 +1,34 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+
+.user--page {
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+}
+.modal--perso {
+  font-size: 0.7em;
+}
+.close {
+  font-size: 0.7em !important;
+}
+.modal-title {
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  width: 100%;
+}
+.message--perso {
+  font-size: 0.4em;
+  position: absolute !important;
+}
+.label--perso {
+  font-size: 0.5em;
+}
+.imgBg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  overflow: hidden;
+}
+.divText {
+  height: 50rem !important;
+}

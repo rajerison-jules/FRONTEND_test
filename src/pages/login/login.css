@@ -1,0 +1,159 @@
+.container--login {
+  font-size: 1rem;
+  height: 100vh !important;
+  background: rgb(255, 255, 255);
+  color: black;
+}
+.form--login {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 2;
+  overflow: hidden !important;
+  background-color: rgb(255, 255, 255);
+  filter: blur(0px);
+  padding: 20px 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 600px;
+}
+.btn--perso {
+  background-color: #f5cb5c !important;
+  color: rgb(0, 136, 255) !important;
+}
+.blobs {
+  top: -100px;
+  left: 0px;
+  fill: #f5cb5c;
+  width: 200vmax;
+  z-index: -1;
+  animation: move 10s ease-in-out infinite;
+  position: absolute;
+  transform-origin: 50% 50%;
+}
+.titre--login {
+  font-size: 3rem;
+}
+.message--perso {
+  font-size: 0.7rem !important;
+  color: #f25c54;
+}
+input.form-control {
+  background: none;
+  border: none;
+  border-bottom: thin solid rgb(142, 142, 142);
+  font-size: 1.2rem;
+}
+input.form-control:focus {
+  outline: none !important;
+}
+.btn-primary {
+  font-size: 1.5 rem !important;
+}
+
+@media (min-width: 576px) {
+  .container--login {
+    font-size: 1.25rem;
+    height: 100vh !important;
+    background: rgb(255, 255, 255);
+    color: black;
+  }
+  .btn--perso {
+    font-size: 1.25rem !important;
+  }
+  input.form-control {
+    background: none;
+    border: none;
+    border-bottom: thin solid rgb(142, 142, 142);
+    font-size: 0.7rem;
+  }
+  .titre--login {
+    font-size: 2rem;
+  }
+  .btn--perso {
+    font-size: 1rem !important;
+  }
+}
+@media (min-width: 768px) {
+  .container--login {
+    font-size: 1.25rem;
+    height: 100vh !important;
+    background: rgb(255, 255, 255);
+    color: black;
+  }
+  .btn--perso {
+    font-size: 1.5rem !important;
+  }
+  input.form-control {
+    background: none;
+    border: none;
+    border-bottom: thin solid rgb(142, 142, 142);
+    font-size: 0.7rem;
+  }
+  .titre--login {
+    font-size: 2rem;
+  }
+  .btn--perso {
+    font-size: 1rem !important;
+  }
+}
+@media (min-width: 992px) {
+  .container--login {
+    font-size: 1.25rem;
+    height: 100vh !important;
+    background: rgb(255, 255, 255);
+    color: black;
+  }
+  .btn--perso {
+    font-size: 1.75rem !important;
+  }
+  input.form-control {
+    background: none;
+    border: none;
+    border-bottom: thin solid rgb(142, 142, 142);
+    font-size: 0.5rem;
+  }
+  .titre--login {
+    font-size: 1rem;
+  }
+  .btn--perso {
+    font-size: 0.5rem !important;
+  }
+}
+@media (min-width: 1200px) {
+  .container--login {
+    font-size: 1.25rem;
+    height: 100vh !important;
+    background: rgb(255, 255, 255);
+    color: black;
+  }
+  .btn--perso {
+    font-size: 0.5rem !important;
+  }
+  input.form-control {
+    background: none;
+    border: none;
+    border-bottom: thin solid rgb(142, 142, 142);
+    font-size: 0.5rem;
+  }
+  .titre--login {
+    font-size: 1rem;
+  }
+  .btn--perso {
+    font-size: 0.5rem !important;
+  }
+  .form--login {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 2;
+    overflow: hidden !important;
+    background-color: rgb(255, 255, 255);
+    filter: blur(0px);
+    padding: 10px;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+  }
+}
