@@ -1,30 +1,49 @@
-# Pour tester 
+# Pour tester
 
-### Cloner  le projet 
- votre terminal  ou console 
+### Cloner le projet
+
+votre terminal ou console
+
 ```bash
- 
+
  git clone https://github.com/rajerison-jules/FRONTEND_test.git
 
 ```
-### Pre requis 
 
-Vous devez avoir Node installer sur votre machine, et vous avez deja lancer le serveur back.
-En suite sur votre console ou terminal vous faite dans le repertoire du projet
+### Pre requis
+
+Vous devez avoir une connexion internet et faire
 
 ```bash
 yarn install
 
 ```
-ce commande va installer tous les module utiliser dans le projet
+
+ou
+
+```bash
+npm install
+
+```
+
+ces commandes va installer tous les modules utilises dans le projet
 
 # Apres lancer
+
 ```bash
 yarn start
 
 ```
 
+ou
+
+```bash
+npm start
+
+```
+
 Cette commande va ouvrir [http://localhost:3000](http://localhost:3000) dans votre navigateur.
 
+vous devez vous inscrire avant de vous connecter, suivez seulement les instructions dans l'application.
 
-# node_react
+# react
