@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import Voiture from "../../components/Voiture";
+
 import axios from "./../../axios";
-import image from "./../../asset/images/undraw_No_data_re_kwbl.png";
+
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import CheckButton from "react-validation/build/button";
+
 import "./user.css";
-import { VscAdd } from "react-icons/vsc";
-import AuthService from "./../../ services/ auth.service";
-import authHeader from "./../../ services/auth-header";
-import image2 from "./../../asset/images/test.svg";
+
+import Navbar from "./../../components/Navbar";
+import Voit from "../../components/Voit";
 
 const required = (value) => {
   if (!value) {
@@ -26,9 +25,6 @@ const required = (value) => {
   }
 };
 export default function Home(props) {
-  const currentUser = AuthService.getCurrentUser();
-  const [voiture, setVoiture] = useState();
-  const access = true;
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -37,6 +33,8 @@ export default function Home(props) {
     setDetail();
   };
   const handleShow = () => setShow(true);
+  const [voiture, setVoiture] = useState(null);
+  const access = false;
 
   const form = useRef();
   const checkBtn = useRef();
@@ -59,7 +57,7 @@ export default function Home(props) {
 
     form.current.validateAll();
     axios
-      .post(
+      .get(
         `api/voitPubl`,
         {
           mark: mark,
@@ -72,19 +70,30 @@ export default function Home(props) {
         }
       )
       .then(() => {
-        props.history.push("/user");
+        props.history.push("/");
         window.location.reload();
       });
   };
 
   useEffect(() => {
-    axios.get(`/api/voitures`, { headers: authHeader() }).then((response) => {
-      setVoiture(response.data);
-    });
-  }, [voiture]);
+    axios
+      .get(
+        `https://my-json-server.typicode.com/rajerison-jules/databases_voitures/voiture`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        setVoiture(response.data);
+      });
+  }, []);
+
   return (
-    <div>
-      <div className="d-flex justify-content-center align-items-center align-center row  imgBg w-100">
+    <div className="w-100 m-0">
+      <Navbar />
+      {/* <div className="d-flex justify-content-center align-items-center align-center row  imgBg w-100">
         <div className="text-white divTex col-6 d-flex justify-content-center align-items-center">
           <img width="500px" src={image2} />
         </div>
@@ -100,7 +109,7 @@ export default function Home(props) {
             <span className="button--ajout">Ajouter Des Voitures </span>{" "}
           </Button>
         </div>
-      </div>
+      </div> */}
 
       <Modal show={show} onHide={handleClose} animation={false}>
         <Modal.Header closeButton>
@@ -153,21 +162,24 @@ export default function Home(props) {
           )}
         </Modal.Footer>
       </Modal>
+      <div></div>
+
       {voiture && (
-        <div>
-          {voiture.map((el) => {
-            return (
-              <Voiture
-                key={el.id}
-                mark={el.mark}
-                detail={el.detail}
-                access={access}
-                comment={el.comments}
-                id={el.id}
-                user={currentUser}
-              />
-            );
-          })}
+        <div className="">
+          <div className="d-flex flex-wrap justify-content-center">
+            {voiture.map((el) => {
+              return (
+                <Voit
+                  key={el.id}
+                  mark={el.Name}
+                  description={el.Description}
+                  detail={el.Year}
+                  access={access}
+                  id={el.id}
+                />
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

@@ -5,6 +5,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import { Context } from "./Context.js";
+import React, { useState } from "react";
 // import "./App.css";
 import Voiture from "./components/Voiture";
 import Navbar from "./components/Navbar";
@@ -17,27 +19,34 @@ import AuthService from "./ services/ auth.service";
 
 function App() {
   const currentUser = AuthService.getCurrentUser();
-
+  const [context, setContext] = useState({
+    username: "",
+    password: "",
+    email: "",
+  });
   return (
     <Router>
       {currentUser ? (
         <div>
-          <Navbar />
-          <Switch>
-            <Route exact path="/user" component={User} />
-            <Route exact path="/" render={() => <Redirect to="/Home" />} />
-            <Route component={NotFound} />
-          </Switch>
+          <Context.Provider value={[context, setContext]}>
+            <Switch>
+              <Route exact path="/user" component={User} />
+              <Route exact path="/" render={() => <Redirect to="/Home" />} />
+              <Route component={NotFound} />
+            </Switch>
+          </Context.Provider>
         </div>
       ) : (
         <div>
-          <Switch>
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/" render={() => <Redirect to="/Home" />} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signin" component={Signin} />
-            <Route component={NotFound} />
-          </Switch>
+          <Context.Provider value={[context, setContext]}>
+            <Switch>
+              <Route exact path="/home" component={Home} />
+              <Route exact path="/" render={() => <Redirect to="/Home" />} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signin" component={Signin} />
+              <Route component={NotFound} />
+            </Switch>
+          </Context.Provider>
         </div>
       )}
     </Router>

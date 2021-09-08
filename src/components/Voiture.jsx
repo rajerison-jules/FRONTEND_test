@@ -39,26 +39,29 @@ export default function Voiture(props) {
     setText(e.target.value);
   }
   return (
-    <div className="d-flex flex-column align-items-center  mt-4  ">
-      <div className=" container--perso  d-flex justify-content-between align-items-center ">
-        {/* <div className=" ">
+    <div className="d-flex  justify-content-center mt-4">
+      <div className=" container--perso row d-flex justify-content-center align-items-center rounded ">
+        <div className=" col-4 col-md-2 p-1">
           <div
-            className="image--container d-flex justify-content- align-items-center "
+            className="image--container d-flex justify-content-center align-items-center "
             style={{ background: ` #ff${randomColor}` }}
           >
             <span className=" id--perso bold">{props.id}</span>
           </div>
-        </div> */}
-        <div className=" p-5  ">
-          <div className="h1">{props.mark}</div>
-          <div>{props.detail}</div>
         </div>
-        <div className="litle--container  d-flex justify-content-end align-items-center">
+        <div className="litle--container col-4 d-flex justify-content-start align-items-center">
+          <div>
+            <span className="row text1 bold"> {props.mark}</span>
+
+            <span className="row text2"> {props.detail}</span>
+          </div>
+        </div>
+        <div className="litle--container col-4 d-flex justify-content-end align-items-center">
           {props.access ? (
             <lord-icon
               src="https://cdn.lordicon.com/nocovwne.json"
               trigger="click"
-              colors="primary:#f25c54,secondary:#f25c54"
+              colors="primary:#0466c8,secondary:#0466c8"
               style={{ width: "50px", height: "150px" }}
               onClick={() => {
                 droit(comments);
@@ -68,7 +71,7 @@ export default function Voiture(props) {
             <lord-icon
               src="https://cdn.lordicon.com/nocovwne.json"
               trigger="click"
-              colors="primary:#f25c54,secondary:#f25c54"
+              colors="primary:#0466c8,secondary:#0466c8"
               style={{ width: "50px", height: "150px" }}
               onClick={() => {
                 alert("Connecter vous pour commenter");
@@ -76,30 +79,46 @@ export default function Voiture(props) {
             ></lord-icon>
           )}
         </div>
-        <div>
-          <div className=" container--perso row   border  container--message bot ">
-            <div className="m-2 bp-2 w-100 d-flex justify-content-center   ">
-              <div className=" m-2 row ">
-                {" "}
-                <p>dernier comentaire: </p>{" "}
+        {comments ? (
+          <div>
+            {props.comment ? (
+              <div className=" container--perso row   border  container--message bot ">
+                {props.comment.map((el) => {
+                  return (
+                    <div
+                      key={el.id}
+                      className="m-2 bp-2 w-100 d-flex justify-content-center   "
+                    >
+                      <div className="container--messageme m-2 row ">
+                        {" "}
+                        <p>{el.value}</p>{" "}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : null}
+            <div className="container--perso row   border ">
+              <div className="  p-2 w-100 d-flex justify-content-start  ">
+                <form className=" m-1 row message--enter">
+                  <div className=" col-10 d-flex justify-content-end align-items-center">
+                    <TextareaAutosize
+                      className=" pt-2 pl-2 pb-1"
+                      onChange={(e) => getvalue(e)}
+                      value={text}
+                    />
+                  </div>
+                  <div
+                    className=" col-2 d-flex justify-content-end align-items-center"
+                    onClick={() => envoyer(text)}
+                  >
+                    <AiOutlineSend className="text-primary  " />
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-
-          <div className="container--perso row   border  style--bg">
-            <div className="  p-2 w-100 d-flex justify-content-start  ">
-              <form className=" m-1 row message--enter">
-                <div className=" col-10 d-flex justify-content-end align-items-center">
-                  ok bebe
-                </div>
-                <div
-                  className=" col-2 d-flex justify-content-end align-items-center"
-                  onClick={() => envoyer(text)}
-                ></div>
-              </form>
-            </div>
-          </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );

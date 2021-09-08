@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "./style.css";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -8,6 +8,7 @@ import "./login.css";
 import voiture from "./../../asset/images/voiture.svg";
 import image1 from "./../../asset/images/image1.svg";
 import SignIn from "./../../components/login/Signin";
+import { Context } from "./../../Context";
 const required = (value) => {
   if (!value) {
     return (
@@ -19,6 +20,7 @@ const required = (value) => {
 };
 
 export default function LoginRegister(props) {
+  const [context, setContext] = useContext(Context);
   const [mode, setMode] = useState("sign-in-mode");
   const form = useRef();
   const checkBtn = useRef();
@@ -53,28 +55,18 @@ export default function LoginRegister(props) {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(username, password).then(
-        () => {
-          props.history.push("/user");
-          window.location.reload();
-        },
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-
-          setLoading(false);
-          setMessage(resMessage);
-        }
-      );
+      if (username == context.username && password == context.password) {
+        props.history.push("/user");
+        window.location.reload();
+        localStorage.setItem("user", JSON.stringify(context));
+      } else {
+        alert("motDepasse ou Username faux");
+      }
     } else {
       setLoading(false);
     }
   };
-
+  console.log(context);
   return (
     <div className={`containers  p-0 w-100 ${mode}`}>
       <div className="forms-containers">
@@ -167,17 +159,16 @@ export default function LoginRegister(props) {
         </div>
         <div className="panel right-panel">
           <div className="content">
-            <h3>One of us ?</h3>
+            <h3>Vous avez deja un compte ?</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-              laboriosam ad deleniti.
+              Vous pouvez vous inscrire en appuyant sur le bouton en dessous!
             </p>
             <button
               className="btn transparent"
               onClick={modeRem}
               id="sign-in-btn"
             >
-              Sign in
+              Connexion
             </button>
           </div>
           <img src={voiture} className="image" alt="" />

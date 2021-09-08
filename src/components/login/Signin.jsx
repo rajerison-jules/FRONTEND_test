@@ -1,9 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
-
+import { Context } from "./../../Context";
 import AuthService from "./../../ services/ auth.service";
 
 const required = (value) => {
@@ -43,6 +43,7 @@ const vpassword = (value) => {
   }
 };
 export default function Signin(props) {
+  const [context, setContext] = useContext(Context);
   const form = useRef();
   const checkBtn = useRef();
 
@@ -75,30 +76,19 @@ export default function Signin(props) {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(username, email, password).then(
-        (response) => {
-          setMessage(response.data.message);
-          setSuccessful(true);
-          props.changeClass("sign-in-mode");
-        },
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-
-          setMessage(resMessage);
-          setSuccessful(false);
-        }
-      );
+      setContext({
+        ...context,
+        username: username,
+        password: password,
+        email: email,
+      });
+      props.changeClass("sign-in-mode");
     }
   };
-
+  console.log(context);
   return (
     <Form onSubmit={handleRegister} ref={form} className="sign-up-form">
-      <h2 className="title">Sign up</h2>
+      <h2 className="title">Inscription</h2>
       <div className="input-field d-flex align-items-center justify-content-between">
         <i className="fas fa-user ml-4"></i>
         <Input
@@ -132,7 +122,7 @@ export default function Signin(props) {
           validations={[required, vpassword]}
         />
       </div>
-      <input type="submit" className="btn" value="Sign up" />
+      <input type="submit" className="btn" value="S'inscrire" />
       <p className="social-text">
         Ou Connectez-vous avec les plateformes sociales
       </p>

@@ -115,8 +115,10 @@ button {
 }
 
 /* navbar perso */
+.deconnect {
+  font-size: 1.5em;
+}
 .navbar--perso {
-  background-image: url("./../asset/images/navbar.svg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -145,6 +147,118 @@ button {
 
 .image--card {
   background: rgb(0, 0, 0);
+}
+
+/* special */
+.fa-time {
+  position: absolute;
+  right: 27%;
+  top: 13%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 2000;
+  color: white;
+}
+.principal {
+  width: 300px;
+  margin: 2em;
+  font-size: 0.6em;
+  transition: all 500ms ease-in-out;
+  top: 0;
+  cursor: pointer;
+}
+.principal2 {
+  width: 100%;
+  height: 100vh;
+  font-size: 0.6em;
+  transition: all 500ms ease-in-out;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.496);
+  z-index: 1000;
+  overflow: hidden;
+}
+.containerVoit {
+  width: 100%;
+  height: 200px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  transition: all 500ms ease-in-out;
+  position: relative;
+}
+.containerVoit2 {
+  position: absolute;
+  width: 50vw;
+
+  top: 10vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 10px;
+  transition: all 500ms ease-in-out;
+}
+.principal .fa-time {
+  display: none;
+}
+.containerVoit:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+.headVoit {
+  position: relative;
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #232526, #414345);
+  background: linear-gradient(to right, #232526, #414345);
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: rgb(91, 91, 91);
+  overflow: hidden;
+}
+.imageV {
+  position: absolute;
+  z-index: -1;
+  filter: blur(2px);
+}
+.contentVoit {
+  position: relative;
+  padding: 1em 2em;
+}
+
+.contentVoit2 {
+  position: relative;
+  padding: 1em 2em;
+  height: 70vh;
+}
+.contentVoit .mode2 {
+  display: none !important;
+}
+.contentVoit2 .mode1 {
+  display: none !important;
+}
+.textV {
+  margin: 0 2em;
+}
+.messageVoit {
+  height: 300px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.mess {
+  background-color: rgba(135, 135, 135, 0.229);
+  padding: 1vw;
+  margin: 1vh;
+  border-radius: 10px;
+}
+.textA {
+  display: flex;
+}
+.textArea {
+  width: 100%;
+  padding: 2em;
 }
 
 @media (min-width: 576px) {
