@@ -4,7 +4,7 @@
  votre terminal  ou console 
 ```bash
  
- git clone https://github.com/rajerison-jules/test_frontEnd.git
+ git clone https://github.com/rajerison-jules/FRONTEND_test.git
 
 ```
 ### Pre requis 
